@@ -43,16 +43,6 @@ class Bottom extends StatelessWidget {
                 style: TextStyle(fontSize: 11),
               ),
             ),
-            Tab(
-              icon: Icon(
-                Icons.account_circle_outlined,
-                size: 30,
-              ),
-              child: Text(
-                'My page',
-                style: TextStyle(fontSize: 11),
-              ),
-            ),
           ],
         ),
       ),

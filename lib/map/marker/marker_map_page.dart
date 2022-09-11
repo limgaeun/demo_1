@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:frontend/community/view/pages/post/write_page.dart';
 import 'package:frontend/map/marker/action_page.dart';
 import 'package:frontend/map/marker/marker_model.dart';
 import 'package:frontend/server/fireservice.dart';
@@ -24,15 +25,13 @@ class _MarkerMapPageState extends State<MarkerMapPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
         body: Column(
           children: <Widget>[
-            _naverMap()
+            _naverMap(),
           ],
         ),
-      ),
-    );
+      );
   }
 
   _naverMap() {
@@ -74,18 +73,39 @@ class _MarkerMapPageState extends State<MarkerMapPage> {
           context: context,
           builder: (BuildContext ctx){
             return AlertDialog(
-              content: Text(_markers[pos].markerId),
+              content: FutureBuilder<List<MarkerModel>>(
+                future: FireService().getEnvFireModel(),
+                builder: (ctx, snapshot){
+                  if (snapshot.hasData){
+                    List<MarkerModel> datas = snapshot.data!;
+                    int i = datas.indexWhere((e) => e.id == marker.markerId);
+                    return SizedBox(
+                      width: 100,
+                      height: 100,
+                      child: ListView(
+                        children: [
+                          Center(
+                            child: Text(
+                              '${datas[i].missionName}',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          Padding(padding: EdgeInsets.all(20)),
+                          Text(
+                            '${datas[i].detailInfo}'
+                          ),
+                        ],
+                      ),
+                    );
+                  } else {
+                    return Center(child: CircularProgressIndicator(),);
+                  }
+                },
+              ),
               actions: [
                 TextButton(onPressed: (){
                   Navigator.of(ctx).pop();
                 }, child: Text('돌아가기')),
-                IconButton(onPressed: (){
-                  Navigator.of(ctx).pop();
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ActionPage())
-                  );
-                }, icon: Icon(Icons.info_outline_rounded))
               ],
             );
           });

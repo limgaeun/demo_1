@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/community/view/pages/post/community_page.dart';
-import 'package:frontend/community/view/pages/user/user_info.dart';
 import 'package:frontend/map/map_page.dart';
 import 'package:frontend/screen/home_screen.dart';
 import 'package:frontend/widget/bottom_bar.dart';
@@ -15,13 +14,14 @@ class _MainPageState extends State<MainPage> {
 
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter test',
+        debugShowCheckedModeBanner: false,
+        title: 'App',
         theme: ThemeData(
           brightness: Brightness.light,
           primaryColor: Colors.blue,
         ),
         home: DefaultTabController(
-          length: 4,
+          length: 3,
           child: Scaffold(
             body: TabBarView(
               physics: NeverScrollableScrollPhysics(),
@@ -29,7 +29,6 @@ class _MainPageState extends State<MainPage> {
                 HomeScreen(),
                 MapPage(),
                 CommunityPage(),
-                UserInfo(),
               ],
             ),
             bottomNavigationBar: Bottom(),

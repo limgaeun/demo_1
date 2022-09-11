@@ -41,7 +41,7 @@ class DetailPage extends StatelessWidget {
                     onPressed: () async {
                       int result = await p.deleteById(p.post.value.id!);
                       result == 1
-                          ? Get.off(()=> CommunityPage())
+                          ? Get.back()
                           : Get.snackbar('삭제 실패', '다시 시도해 주세요');
                     },
                     child: Text("삭제"),
