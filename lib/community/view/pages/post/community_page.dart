@@ -26,7 +26,7 @@ class CommunityPage extends StatelessWidget {
         child: Icon(Icons.code),
       ),
       appBar: AppBar(
-        title: Text("${u.isLogin}"),
+        title: Text("Community Page"),
       ),
       body: RefreshIndicator(
         key: refreshKey,
@@ -43,7 +43,7 @@ class CommunityPage extends StatelessWidget {
                   Get.to(() => DetailPage(p.posts[index].id));
                 },
                 child: ListTile(
-                  leading: Text("${p.posts[index].id}"),
+                  leading: Text("${p.posts[index].user!.username}"),
                   title: Text("${p.posts[index].title}"),
                 ),
               );

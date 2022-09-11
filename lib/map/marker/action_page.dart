@@ -7,8 +7,11 @@ class ActionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('detail Info'),
+      ),
+      body: Center(
         child: Column(
           children: [
             TextButton(

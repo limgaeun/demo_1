@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/community/controller/user_controller.dart';
 import 'package:frontend/widget/box_slider.dart';
 import 'package:frontend/widget/profile_map.dart';
 import '../model/poster_model.dart';
+
 
 class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
@@ -42,25 +44,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         appBar: AppBar(
-          title: Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Container(
-                  child: Text('Test App'),
-                ),
-                Container(
-                  child: Row(
-                    children: <Widget>[
-                      TextButton(onPressed: (){}, child: Text('log in', style: TextStyle(color: Colors.white),)),
-                      TextButton(onPressed: (){}, child: Text('sign in', style: TextStyle(color: Colors.white),)),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+          title: Center(
+            child: Text('App'),
           ),
           elevation: 0,
         ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/map/map_page.dart';
+import 'package:get/get.dart';
+import 'package:frontend/community/controller/user_controller.dart';
 
 class ProfileMap extends StatefulWidget {
   @override
@@ -9,6 +11,7 @@ class ProfileMap extends StatefulWidget {
 class _ProfileMapState extends State<ProfileMap> {
   @override
   Widget build(BuildContext context) {
+    UserController u = Get.find();
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     print(width);
@@ -31,7 +34,7 @@ class _ProfileMapState extends State<ProfileMap> {
                 Container(
                   child: CircleAvatar(
                     child: CircleAvatar(
-                      backgroundImage: AssetImage('assets/iu.jpg'),
+                      backgroundImage: AssetImage('assets/profile.png'),
                       radius: width * 0.15,
                     ),
                     radius: width * 0.16,
@@ -48,10 +51,7 @@ class _ProfileMapState extends State<ProfileMap> {
                         child: Text('Profile', style: TextStyle(color: Colors.blueAccent, fontWeight: FontWeight.bold, fontSize: width * 0.07),),
                       ),
                       Container(
-                        child: Text('Name : User', style: TextStyle(color: Colors.black, fontSize: width * 0.035),),
-                      ),
-                      Container(
-                        child: Text('Level : 0', style: TextStyle(color: Colors.black, fontSize: width * 0.035),),
+                        child: Text('Name : ${u.principal.value.username}', style: TextStyle(color: Colors.black, fontSize: width * 0.035),),
                       ),
                     ],
                   ),
@@ -66,7 +66,7 @@ class _ProfileMapState extends State<ProfileMap> {
               borderRadius: BorderRadius.circular(5),
               border: Border.all(color: Colors.black, width: 1),
             ),
-            child: Container(child: Text('뭔가 다른걸 구상해보자'),),
+            child: Container(child: MapPage(),),
           )
         ],
       ),
